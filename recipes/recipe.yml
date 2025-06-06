@@ -7,7 +7,7 @@ description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 41 # latest is also supported if you want new updates ASAP
+image-version: 42 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -28,6 +28,13 @@ modules:
       # "firefox" is the main package, "firefox-langpacks" is a dependency
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  
+  - type: dnf
+    group-install:
+      with-optional: true # install optional packages from group
+      packages:
+        - virtualization
+        - development-tools
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -36,6 +43,7 @@ modules:
       install:
         - org.mozilla.firefox
         - org.gnome.Loupe
+        - md.obsidian.Obsidian
       remove:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
