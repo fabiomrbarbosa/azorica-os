@@ -68,6 +68,10 @@ modules:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
+  - type: kargs
+    kargs:
+      - i915.enable_guc=3
+
   - type: script
     scripts:
       - image_name.sh
