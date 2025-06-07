@@ -63,6 +63,7 @@ modules:
       install:
         - org.mozilla.firefox
         - app.zen_browser.zen
+        - com.mattjakeman.ExtensionManager
         - org.gnome.Loupe
         - md.obsidian.Obsidian
         - de.haeckerfelix.Shortwave
@@ -70,12 +71,17 @@ modules:
         - fr.handbrake.ghb
         - fr.handbrake.ghb.Plugin.IntelMediaSDK
       remove:
+        - org.gnome.Extensions
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
+  - type: brew
+    nofile-limits: true # increase nofile limits
+    brew-analytics: false # disable telemetry
+
   - type: kargs
     kargs:
-      - i915.enable_guc=3
+      - i915.enable_guc=2
 
   - type: script
     scripts:
