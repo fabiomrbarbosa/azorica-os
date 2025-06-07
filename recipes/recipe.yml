@@ -32,6 +32,8 @@ modules:
      packages:
         - micro
         - starship
+        - fastfetch
+        - hyfetch
         - thermald
         - tlp
         - intel-media-driver
@@ -52,7 +54,7 @@ modules:
       with-optional: true # install optional packages from group
       packages:
         - virtualization
-        - development-tools
+        # - development-tools
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
