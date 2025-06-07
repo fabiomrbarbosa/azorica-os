@@ -108,9 +108,10 @@ modules:
     fonts:
       nerd-fonts:
         - FiraCode # don't add spaces or "Nerd Font" suffix.
-        - CaskaydiaCode
-        - CaskaydiaMono
+        - CascadiaCode
+        - CascadiaMono
         - SourceCodePro
+        - Iosevka
         - JetBrainsMono
       google-fonts:
         - Open Sans
