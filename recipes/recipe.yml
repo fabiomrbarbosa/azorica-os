@@ -33,7 +33,8 @@ modules:
         - old: ffmpeg-free
           new: ffmpeg
     install:
-     packages:
+      packages:
+        - gh   
         - micro
         - starship
         - fastfetch
@@ -71,13 +72,20 @@ modules:
       install:
         - org.mozilla.firefox
         - app.zen_browser.zen
-        - com.mattjakeman.ExtensionManager
-        - org.gnome.Loupe
         - md.obsidian.Obsidian
         - de.haeckerfelix.Shortwave
         - io.github.celluloid_player.Celluloid
         - fr.handbrake.ghb
         - fr.handbrake.ghb.Plugin.IntelMediaSDK
+        - com.mattjakeman.ExtensionManager
+        - org.gnome.font-viewer
+        - org.gnome.Loupe
+        - org.gnome.Decibels
+        - org.gnome.Evince
+        - org.gnome.Contacts
+        - org.gnome.Calendar
+        - org.gnome.Calculator
+        - org.gnome.Weather
       remove:
         - org.gnome.Extensions
         - org.gnome.eog
@@ -87,6 +95,17 @@ modules:
     nofile-limits: true # increase nofile limits
     brew-analytics: false # disable telemetry
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix.
+        - CaskaydiaCove
+        - CaskaydiaMono
+        - SourceCodePro
+        - JetBrainsMono
+      google-fonts:
+        - Open Sans
+        
   - type: kargs
     kargs:
       - i915.enable_guc=2
