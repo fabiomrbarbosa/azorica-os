@@ -91,6 +91,14 @@ modules:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
+  - type: gnome-extensions
+    install:
+      - Night Theme Switcher
+      - Blur my Shell
+      - AppIndicator and KStatusNotifierItem Support
+      - Dash to Dock
+      - GSConnect
+
   - type: brew
     nofile-limits: true # increase nofile limits
     brew-analytics: false # disable telemetry
