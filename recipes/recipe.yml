@@ -23,25 +23,27 @@ modules:
       copr:
         - atim/starship
     install:
-      - micro
-      - starship
-      - thermald
-      - tlp
-      - intel-media-driver
-      - ffmpeg-libs 
-      - gstreamer1-libav 
-      - gstreamer1-plugin-openh264 
-      - gstreamer1-plugins-bad-freeworld 
-      - gstreamer1-plugins-ugly
+     packages:
+        - micro
+        - starship
+        - thermald
+        - tlp
+        - intel-media-driver
+        - ffmpeg-libs 
+        - gstreamer1-libav 
+        - gstreamer1-plugin-openh264 
+        - gstreamer1-plugins-bad-freeworld 
+        - gstreamer1-plugins-ugly
     remove:
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
-      - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-      - tuned
-      - tuned-ppd
+      packages:
+        # example: removing firefox (in favor of the flatpak)
+        # "firefox" is the main package, "firefox-langpacks" is a dependency
+        - firefox
+        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - tuned
+        - tuned-ppd
     replace:
-      - from-repo: rpmfusion
+      - from-repo: nonfree
         allow-erasing: true
         packages:
         - old: ffmpeg-free
