@@ -22,6 +22,12 @@ modules:
       nonfree: rpmfusion
       copr:
         - atim/starship
+    replace:
+      - from-repo: nonfree
+        allow-erasing: true
+        packages:
+        - old: ffmpeg-free
+          new: ffmpeg
     install:
      packages:
         - micro
@@ -42,12 +48,6 @@ modules:
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - tuned
         - tuned-ppd
-    replace:
-      - from-repo: nonfree
-        allow-erasing: true
-        packages:
-        - old: ffmpeg-free
-          new: ffmpeg
     group-install:
       with-optional: true # install optional packages from group
       packages:
