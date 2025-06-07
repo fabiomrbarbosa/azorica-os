@@ -27,7 +27,7 @@ modules:
       copr:
         - atim/starship
     replace:
-      - from-repo: nonfree
+      - from-repo: rpmfusion
         allow-erasing: true
         packages:
         - old: ffmpeg-free
@@ -44,7 +44,7 @@ modules:
         - repo: vscode-yum
           packages:
             - code
-        - repo: nonfree
+        - repo: rpmfusion
           packages:
             - intel-media-driver
             - ffmpeg-libs 
