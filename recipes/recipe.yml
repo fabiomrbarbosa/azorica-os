@@ -93,6 +93,7 @@ modules:
 
   - type: gnome-extensions
     install:
+      - Alphabetical App Grid
       - Night Theme Switcher
       - Blur my Shell
       - AppIndicator and KStatusNotifierItem Support
