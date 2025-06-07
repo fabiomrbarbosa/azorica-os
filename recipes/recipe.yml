@@ -36,6 +36,7 @@ modules:
         - hyfetch
         - thermald
         - tlp
+        - gnome-tweaks
         - intel-media-driver
         - ffmpeg-libs 
         - gstreamer1-libav 
