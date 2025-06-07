@@ -28,7 +28,6 @@ modules:
       - thermald
       - tlp
       - intel-media-driver
-      - ffmpeg
       - ffmpeg-libs 
       - gstreamer1-libav 
       - gstreamer1-plugin-openh264 
@@ -41,7 +40,12 @@ modules:
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
       - tuned
       - tuned-ppd
-      - ffmpeg-free
+    replace:
+      - from-repo: rpmfusion
+        allow-erasing: true
+        packages:
+        - old: ffmpeg-free
+          new: ffmpeg
     group-install:
       with-optional: true # install optional packages from group
       packages:
