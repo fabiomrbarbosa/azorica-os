@@ -35,6 +35,7 @@ modules:
     install:
       packages:
         - gh   
+        - s-tui
         - micro
         - starship
         - fastfetch
@@ -94,11 +95,11 @@ modules:
   - type: gnome-extensions
     install:
       - Alphabetical App Grid
-      - Night Theme Switcher
-      - Blur my Shell
       - AppIndicator and KStatusNotifierItem Support
+      - Blur my Shell
       - Dash to Dock
       - GSConnect
+      - Night Theme Switcher
 
   - type: brew
     nofile-limits: true # increase nofile limits
