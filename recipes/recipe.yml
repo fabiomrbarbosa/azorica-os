@@ -28,6 +28,8 @@ modules:
       copr:
         - atim/starship
         - sneexy/zen-browser
+    optfix:
+      - zen
     install:
       packages:
         - starship
