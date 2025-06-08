@@ -17,8 +17,6 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
- 
-
   - type: dnf
     repos:
       cleanup: true
@@ -29,6 +27,7 @@ modules:
         - https://packages.microsoft.com/keys/microsoft.asc
       copr:
         - atim/starship
+        - sneexy/zen-browser
     install:
       packages:
         - starship
@@ -47,6 +46,7 @@ modules:
         - gstreamer1-plugin-openh264 
         - gstreamer1-plugins-bad-freeworld 
         - gstreamer1-plugins-ugly
+        - zen-browser
         - repo: vscode-yum
           packages:
             - code
@@ -54,8 +54,8 @@ modules:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        # - firefox
+        # - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - tuned
         - tuned-ppd
     group-install:
@@ -69,8 +69,8 @@ modules:
     system:
       # If no repo information is specified, Flathub will be used by default
       install:
-        - org.mozilla.firefox
-        - app.zen_browser.zen
+        # - org.mozilla.firefox
+        # - app.zen_browser.zen
         - md.obsidian.Obsidian
         - de.haeckerfelix.Shortwave
         - io.github.celluloid_player.Celluloid
