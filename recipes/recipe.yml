@@ -77,6 +77,7 @@ modules:
         - fr.handbrake.ghb
         - fr.handbrake.ghb.Plugin.IntelMediaSDK
         - com.github.xournalpp.xournalpp
+        - io.missioncenter.MissionCenter
         - com.mattjakeman.ExtensionManager
         - org.gnome.font-viewer
         - org.gnome.Loupe
