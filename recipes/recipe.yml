@@ -17,40 +17,22 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+ 
+
   - type: dnf
     repos:
       cleanup: true
       nonfree: rpmfusion
-    replace:
-      - from-repo: rpmfusion
-        packages:
-        - old: ffmpeg-free
-          new: ffmpeg
-        - old: mesa-va-drivers
-          new: mesa-va-drivers-freeworld
-        - old: libavcodec
-          new: libavcodec-freeworld
-      - from-repo: rpmfusion-nonfree
-        packages:
-          - intel-media-driver
-    install:
-      install-weak-deps: false
-      packages:
-        - gstreamer1-plugin-libav
-        - gstreamer1-plugins-bad-free-extras
-        - gstreamer1-plugins-bad-freeworld
-        - gstreamer1-plugins-ugly
-        - gstreamer1-vaapi
-        - libheif-freeworld
-
-  - type: dnf
-    repos:
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
       keys:
         - https://packages.microsoft.com/keys/microsoft.asc
       copr:
         - atim/starship
+    replace:
+    - from-repo: rpmfusion-nonfree
+      packages:
+        - intel-media-driver
     install:
       packages:
         - starship
@@ -64,9 +46,10 @@ modules:
         - hyfetch
         - thermald
         - tlp
-        - ffmpegthumbnailer
-        - adw-gtk3-theme 
         - gnome-tweaks
+        - gstreamer1-plugin-openh264 
+        - gstreamer1-plugins-bad-freeworld 
+        - gstreamer1-plugins-ugly
         - repo: vscode-yum
           packages:
             - code
@@ -78,7 +61,6 @@ modules:
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - tuned
         - tuned-ppd
-        - ffmpeg-free
     group-install:
       with-optional: false # install optional packages from group
       packages:
