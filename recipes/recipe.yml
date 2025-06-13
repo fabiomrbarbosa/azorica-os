@@ -127,5 +127,10 @@ modules:
     scripts:
       - image_name.sh
 
+  - type: files
+    files:
+      - source: assets/fonts
+        destination: /usr/share/fonts
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
