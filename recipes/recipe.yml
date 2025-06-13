@@ -28,7 +28,6 @@ modules:
       keys:
         - https://packages.microsoft.com/keys/microsoft.asc
       copr:
-        - abn/throttled
         - atim/starship
         - sneexy/zen-browser
     optfix:
@@ -44,7 +43,6 @@ modules:
         - micro
         - fastfetch
         - hyfetch
-        - throttled
         - tlp
         - gnome-tweaks
         - intel-media-driver
@@ -63,7 +61,6 @@ modules:
         # - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - tuned
         - tuned-ppd
-        - thermald
     group-install:
       with-optional: false # install optional packages from group
       packages:
