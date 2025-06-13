@@ -44,6 +44,7 @@ modules:
         - fastfetch
         - hyfetch
         - tlp
+        - thermald
         - gnome-tweaks
         - intel-media-driver
         - gstreamer1-plugin-openh264 
