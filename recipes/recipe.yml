@@ -52,11 +52,12 @@ modules:
         - gstreamer1-plugins-ugly
         # GUI Apps
         - zen-browser
-        - xournal
+        - xournalpp
         - gimp
         - inkscape
         - celluloid
         - handbrake
+        - handbrake-gui
         # Gnome Apps
         - gnome-font-viewer
         - loupe
