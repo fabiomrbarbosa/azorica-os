@@ -85,8 +85,9 @@ modules:
         - virtualization
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    system:
+    configurations:
+    - notify: false
+      scope: system
       # If no repo information is specified, Flathub will be used by default
       install:
         # - org.mozilla.firefox
