@@ -18,10 +18,6 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
       - source: assets/fonts
         destination: /usr/share/fonts/mscorefonts # copies basic MS fonts to the system fonts folder
-
-  - type: script
-    snippets:
-      - "fc-cache -f -v"
         
   - type: dnf
     repos:
