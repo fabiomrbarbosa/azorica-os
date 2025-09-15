@@ -117,6 +117,7 @@ modules:
       - Dash to Dock
       - GSConnect
       - Night Theme Switcher
+      - Tiling Shell
 
   - type: brew
     nofile-limits: true # increase nofile limits
