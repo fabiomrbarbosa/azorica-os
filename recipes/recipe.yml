@@ -23,9 +23,6 @@ modules:
     repos:
       cleanup: true
       nonfree: rpmfusion
-      # enable Fedora's built-in Cisco OpenH264 repo (no custom files needed)
-      enable:
-        - fedora-cisco-openh264
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
       keys:
