@@ -23,6 +23,9 @@ modules:
     repos:
       cleanup: true
       nonfree: rpmfusion
+      # enable Fedora's built-in Cisco OpenH264 repo (no custom files needed)
+      enable:
+        - fedora-cisco-openh264
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
       keys:
@@ -30,12 +33,22 @@ modules:
       copr:
         - atim/starship
         - sneexy/zen-browser
+
+    # swap Fedora's ffmpeg-free for RPM Fusion's full ffmpeg (declare once here)
+    replace:
+      - from-repo: rpmfusion-free
+        allow-erasing: true
+        packages:
+          - ffmpeg-free
+          - ffmpeg
+
     optfix:
       - zen
+
     install:
       packages:
         - starship
-        - gh   
+        - gh
         - unrar
         - p7zip 
         - p7zip-plugins
@@ -46,10 +59,23 @@ modules:
         - tlp
         - thermald
         - gnome-tweaks
-        - intel-media-driver
-        - gstreamer1-plugin-openh264 
-        - gstreamer1-plugins-bad-freeworld 
+
+        # --- Multimedia / Codecs / VA-API ---
+        # FFmpeg libs (ffmpeg itself comes via replace: above)
+        - ffmpeg-libs
+        # GStreamer plugin stacks from RPM Fusion
+        - gstreamer1-plugins-good
+        - gstreamer1-plugins-bad-freeworld
         - gstreamer1-plugins-ugly
+        - gstreamer1-plugins-libav
+        # VA-API (Intel iHD for T480 / UHD 620)
+        - gstreamer1-vaapi
+        - intel-media-driver
+        - libva-utils
+        # OpenH264 (WebRTC/Firefox/GStreamer)
+        - mozilla-openh264
+        - gstreamer1-plugin-openh264
+
         # GUI Apps
         - zen-browser
         - xournalpp
@@ -58,6 +84,7 @@ modules:
         - celluloid
         - handbrake
         - handbrake-gui
+
         # Gnome Apps
         - gnome-font-viewer
         - loupe
@@ -67,20 +94,19 @@ modules:
         - gnome-calendar
         - gnome-calculator
         - gnome-weather
+
         # VS Code
         - repo: vscode-yum
           packages:
             - code
+
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        # - firefox
-        # - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - tuned
         - tuned-ppd
+
     group-install:
-      with-optional: false # install optional packages from group
+      with-optional: false
       packages:
         - virtualization
 
@@ -88,26 +114,11 @@ modules:
     configurations:
     - notify: false
       scope: system
-      # If no repo information is specified, Flathub will be used by default
       install:
-        # - org.mozilla.firefox
-        # - app.zen_browser.zen
         - md.obsidian.Obsidian
         - de.haeckerfelix.Shortwave
         - io.missioncenter.MissionCenter
         - com.mattjakeman.ExtensionManager
-        # - io.github.celluloid_player.Celluloid
-        # - fr.handbrake.ghb
-        # - fr.handbrake.ghb.Plugin.IntelMediaSDK
-        # - com.github.xournalpp.xournalpp
-        # - org.gnome.font-viewer
-        # - org.gnome.Loupe
-        # - org.gnome.Decibels
-        # - org.gnome.Evince
-        # - org.gnome.Contacts
-        # - org.gnome.Calendar
-        # - org.gnome.Calculator
-        # - org.gnome.Weather
 
   - type: gnome-extensions
     install:
@@ -121,13 +132,13 @@ modules:
       - Tiling Shell
 
   - type: brew
-    nofile-limits: true # increase nofile limits
-    brew-analytics: false # disable telemetry
+    nofile-limits: true
+    brew-analytics: false
 
   - type: fonts
     fonts:
       nerd-fonts:
-        - FiraCode # don't add spaces or "Nerd Font" suffix.
+        - FiraCode
         - CascadiaCode
         - CascadiaMono
         - SourceCodePro
@@ -144,5 +155,4 @@ modules:
     scripts:
       - image_name.sh
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
-
+  - type: signing
