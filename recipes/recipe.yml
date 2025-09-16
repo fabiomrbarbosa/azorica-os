@@ -56,7 +56,6 @@ modules:
         - hyfetch
         - tlp
         - thermald
-        - gnome-tweaks
 
         # --- Multimedia / Codecs / VA-API ---
         # FFmpeg libs (ffmpeg itself comes via replace: above)
@@ -92,6 +91,7 @@ modules:
         - gnome-calendar
         - gnome-calculator
         - gnome-weather
+        - gnome-tweaks
 
         # VS Code
         - repo: vscode-yum
@@ -114,7 +114,9 @@ modules:
       scope: system
       install:
         - md.obsidian.Obsidian
+        - com.github.huluti.Curtail
         - de.haeckerfelix.Shortwave
+        - org.gnome.Podcasts
         - io.missioncenter.MissionCenter
         - com.mattjakeman.ExtensionManager
 
