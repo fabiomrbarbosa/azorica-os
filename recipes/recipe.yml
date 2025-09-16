@@ -43,6 +43,7 @@ modules:
       - zen
 
     install:
+      skip-unavailable: true
       packages:
         - starship
         - gh
@@ -64,7 +65,7 @@ modules:
         - gstreamer1-plugins-good
         - gstreamer1-plugins-bad-freeworld
         - gstreamer1-plugins-ugly
-        - gstreamer1-plugins-libav
+        - gstreamer1-plugin-libav
         # VA-API (Intel iHD for T480 / UHD 620)
         - gstreamer1-vaapi
         - intel-media-driver
