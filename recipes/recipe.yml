@@ -1,46 +1,40 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: azorica-os
-# description will be included in the image's metadata
 description: This is my personal OS image.
 
-# the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+image-version: 42
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
       - source: assets/fonts
-        destination: /usr/share/fonts/mscorefonts # copies basic MS fonts to the system fonts folder
-        
+        destination: /usr/share/fonts/mscorefonts
+
   - type: dnf
     repos:
       cleanup: true
-      nonfree: rpmfusion
+      # ⬇️ Switch from RPM Fusion to negativo17's nonfree
+      nonfree: negativo17
+      # Keep your extra repos/COPRs
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
       keys:
         - https://packages.microsoft.com/keys/microsoft.asc
       copr:
         - atim/starship
-        - sneexy/zen-browser
 
-    # swap Fedora's ffmpeg-free for RPM Fusion's full ffmpeg (declare once here)
+    # Swap Fedora's ffmpeg-free for negativo17's full ffmpeg.
+    # Repo id for negativo17 multimedia is "fedora-multimedia".
     replace:
-      - from-repo: rpmfusion-free
+      - from-repo: fedora-multimedia
         allow-erasing: true
         packages:
           - ffmpeg-free
           - ffmpeg
-
-    optfix:
-      - zen
 
     install:
       skip-unavailable: true
@@ -48,7 +42,7 @@ modules:
         - starship
         - gh
         - unrar
-        - p7zip 
+        - p7zip
         - p7zip-plugins
         - s-tui
         - micro
@@ -57,24 +51,20 @@ modules:
         - tlp
         - thermald
 
-        # --- Multimedia / Codecs / VA-API ---
-        # FFmpeg libs (ffmpeg itself comes via replace: above)
+        # --- Multimedia / Codecs / VA-API (negativo17) ---
         - ffmpeg-libs
-        # GStreamer plugin stacks from RPM Fusion
         - gstreamer1-plugins-good
-        - gstreamer1-plugins-bad-freeworld
+        - gstreamer1-plugins-bad
         - gstreamer1-plugins-ugly
         - gstreamer1-plugin-libav
-        # VA-API (Intel iHD for T480 / UHD 620)
         - gstreamer1-vaapi
         - intel-media-driver
         - libva-utils
-        # OpenH264 (WebRTC/Firefox/GStreamer)
+        # OpenH264 is provided in negativo17; do NOT enable Fedora's Cisco repo
         - mozilla-openh264
         - gstreamer1-plugin-openh264
 
         # GUI Apps
-        - zen-browser
         - xournalpp
         - gimp
         - inkscape
@@ -82,7 +72,7 @@ modules:
         - handbrake
         - handbrake-gui
 
-        # Gnome Apps
+        # GNOME Apps
         - gnome-font-viewer
         - loupe
         - decibels
@@ -127,7 +117,7 @@ modules:
       - Blur my Shell
       - Dash to Dock
       - GSConnect
-      - Hot Edge 
+      - Hot Edge
       - Night Theme Switcher
       - Tiling Shell
 
@@ -146,7 +136,7 @@ modules:
         - JetBrainsMono
       google-fonts:
         - Open Sans
-        
+
   - type: kargs
     kargs:
       - i915.enable_guc=2
