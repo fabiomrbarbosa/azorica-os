@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: azorica-os
-description: This is my personal OS image.
+description: Personal atomic Fedora image based on Silverblue.
 
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 42
@@ -14,7 +14,6 @@ modules:
 
   - type: dnf
     repos:
-      cleanup: true
       nonfree: negativo17
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
@@ -96,7 +95,7 @@ modules:
 
   - type: default-flatpaks
     configurations:
-    - notify: false
+    - notify: true
       scope: system
       install:
         - md.obsidian.Obsidian
@@ -118,14 +117,9 @@ modules:
       - Tiling Shell
       - Workspaces indicator by open apps
 
-  - type: brew
-    nofile-limits: true
-    brew-analytics: false
-
   - type: fonts
     fonts:
       nerd-fonts:
-        - FiraCode
         - CascadiaCode
         - CascadiaMono
         - SourceCodePro
