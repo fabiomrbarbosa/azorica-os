@@ -120,6 +120,7 @@ modules:
       - Hot Edge
       - Night Theme Switcher
       - Tiling Shell
+      - Workspaces indicator by open apps 
 
   - type: brew
     nofile-limits: true
