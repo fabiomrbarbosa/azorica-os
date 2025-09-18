@@ -11,15 +11,11 @@ modules:
     files:
       - source: system
         destination: /
-      - source: assets/fonts
-        destination: /usr/share/fonts/mscorefonts
 
   - type: dnf
     repos:
       cleanup: true
-      # ⬇️ Switch from RPM Fusion to negativo17's nonfree
       nonfree: negativo17
-      # Keep your extra repos/COPRs
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
       keys:
@@ -120,7 +116,7 @@ modules:
       - Hot Edge
       - Night Theme Switcher
       - Tiling Shell
-      - Workspaces indicator by open apps 
+      - Workspaces indicator by open apps
 
   - type: brew
     nofile-limits: true
