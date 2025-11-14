@@ -4,7 +4,7 @@ name: azorica-os
 description: Personal atomic Fedora image based on Silverblue.
 
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42
+image-version: 43
 
 modules:
   - type: files
